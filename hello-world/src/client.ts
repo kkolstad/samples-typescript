@@ -28,6 +28,7 @@ async function run() {
     // in practice, use a meaningful business ID, like customerId or transactionId
     workflowId: 'workflow-' + nanoid(),
   });
+  console.log("workflow id:", handle.workflowId);
   const result = await handle.result();
   console.log("result", result);
 
