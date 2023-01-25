@@ -1,11 +1,12 @@
 // @@@SNIPSTART typescript-hello-worker
-import { Worker } from '@temporalio/worker';
+import { NativeConnection, Worker } from '@temporalio/worker';
 import * as activities from './activities';
 
 async function run() {
   // Step 1: Register Workflows and Activities with the Worker and connect to
   // the Temporal server.
   const worker = await Worker.create({
+    connection: await NativeConnection.connect({address: "localhost:7233"}),
     workflowsPath: require.resolve('./workflows'),
     activities,
     taskQueue: 'hello-world',
